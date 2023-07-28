@@ -1,7 +1,7 @@
 import argparse
+import sys
 import socket
 import threading
-import time
 from typing import List
 
 from core.utils import construct_http_request, parse_http_response
@@ -11,10 +11,11 @@ from core.logging import log
 BUFFER_SIZE = 4096
 
 class ProxyChecker:
-    def __init__(self, filename: str, timeout: float, retries: int) -> None:
+    def __init__(self, filename: str, timeout: float, retries: int, out_file: str) -> None:
         self.filename = filename
         self.timeout = timeout
         self.retries = retries
+        self.out_file = out_file
         self.good_proxies: List[str] = []
 
     def read_proxies_from_file(self) -> List[str]:
@@ -86,7 +87,7 @@ class ProxyChecker:
         for thread in threads:
             thread.join()
 
-    def write_proxies_to_file(self, filename: str) -> None:
+    def write_proxies_to_file(self) -> None:
         """
         Write the good proxies to a file.
 
@@ -94,7 +95,7 @@ class ProxyChecker:
             filename (str): The name of the file to write the good proxies to.
         """
         self.good_proxies.sort()
-        with open(filename, 'w') as file:
+        with open(self.out_file, 'w') as file:
             for proxy in self.good_proxies:
                 file.write(proxy + '\n')
 
@@ -106,13 +107,21 @@ def main():
 (__)  (__\_) \__/(_/\_)(__/     \___)\_/\_/(__) 
 ''')
     parser = argparse.ArgumentParser()
-    parser.add_argument("filename", help="Text file containing proxies (ip:port) on each line")
-    parser.add_argument("timeout", type=float, help="Timeout duration in seconds")
-    parser.add_argument("retries", type=int, help="Number of times to retry a proxy")
-    download_proxies()
+    parser.add_argument("-f", "--filename", type=str, help="Text file containing proxies (ip:port) on each line", default="proxies.txt")
+    parser.add_argument("-t", "--timeout", type=float, help="Timeout duration in seconds", default=5)
+    parser.add_argument("-r", "--retries", type=int, help="Number of times to retry a proxy", default=2)
+    parser.add_argument("-o", "--output", type=str, help="Output file name", default="good.txt")
+    parser.add_argument("-d", "--download", action="store_true", help="Download proxies from the internet", default=False)
+
     args = parser.parse_args()
 
-    proxy_checker = ProxyChecker(args.filename, args.timeout, args.retries)
+    if args.download:
+        if download_proxies(args.filename):
+            pass # Successfully downloaded proxies - logged in download_proxies()
+        else:
+            log('Failed to download proxies', level='error')
+
+    proxy_checker = ProxyChecker(args.filename, args.timeout, args.retries, args.output)
     proxy_checker.check_all_proxies()
     proxy_checker.write_proxies_to_file("good.txt")
 
