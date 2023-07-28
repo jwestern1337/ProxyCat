@@ -1,7 +1,7 @@
 import requests, json
 from .logging import log
 
-def download_proxies() -> bool:
+def download_proxies(file_name: str) -> bool:
     paths = [
         'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=https&timeout=10000&country=all&ssl=all&anonymity=all',
         'https://api.proxyscrape.com/v2/?request=displayproxies&protocol=http&timeout=10000&country=all&ssl=all&anonymity=all',
@@ -29,7 +29,7 @@ def download_proxies() -> bool:
                 continue
             if proxy not in unique_proxies:
                 unique_proxies.append(proxy)
-        with open('proxies.txt', 'w', encoding='utf-8') as file:
+        with open(file_name, 'a', encoding='utf-8') as file:
             for proxy in unique_proxies:
                 file.write(proxy + '\n')
     return True
