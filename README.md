@@ -1,3 +1,8 @@
+<h2 align="center">
+  <img src=https://forthebadge.com/images/badges/made-with-python.svg height=28> 
+  <img alt="Project License" src="https://img.shields.io/github/license/billyeatcookies/Biscuit?style=for-the-badge"> 
+</h2>
+
 # ProxyCat
 ProxyCat is a Python CLI-based tool that allows you to validate a list of proxies and determine which ones are online and working. It supports automatic downloading of proxies from various online sources, making it easier for you to keep your proxy list up-to-date.
 
