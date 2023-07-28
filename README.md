@@ -38,3 +38,6 @@ ProxyCat currently supports the following arguments:
 ⋅⋅* `-t, --timeout`: Timeout duration in seconds (default=5)
 ⋅⋅* `-r, --retries`: Number of times to retry a proxy (default=2)
 ⋅⋅* `-d, --download`: Download proxies from the internet (default=False)
+
+## License
+ProxyCat is licensed under the [MIT license](https://opensource.org/license/mit/) as will remain this way for the duration of the project.
