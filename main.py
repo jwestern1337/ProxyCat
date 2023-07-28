@@ -78,12 +78,7 @@ class ProxyChecker:
         """
         proxies = self.read_proxies_from_file()
         threads = []
-        index = 0
         for proxy in proxies:
-            index += 1
-            if index >= 100:
-                time.sleep(0.5)
-                index = 0
             thread = threading.Thread(target=self.check_proxy, args=(proxy,))
             thread.start()
             threads.append(thread)
