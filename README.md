@@ -44,5 +44,28 @@ ProxyCat currently supports the following arguments:
 ⋅⋅* `-r, --retries`: Number of times to retry a proxy (default=2)
 ⋅⋅* `-d, --download`: Download proxies from the internet (default=False)
 
+## Roadmap
+I have quite a lot planned for ProxyCat in the future. For now here is a roadmap i have created:
+
+```
+1st update:
+  The first update is going to be primarily focused on adding new featres ->
+    - Add support for checking socks4/5 proxies (with username and password authentication supported).
+    - Add the option to check more than one type of proxy at once (probably with an arg such as --multi).
+    - Add the option to allow for a maximum number of threads to be used (probably with an arg such as --threads <x>).
+
+2nd update:
+  The second update is going to be focused on re-designing the UI ->
+    - Add support for different languages.
+    - Use tables to display final results in a nicer manner.
+
+3rd update:
+  The third (and possibly final major) update is going to be focused again on adding new features ->
+    - Add support for several other types of auth methods for the socks4/5 proxies.
+    - Add better support for HTTP/s proxies.
+    - Possible add a database somehow (not sure yet).
+    - Any other general optimisations or improvements.
+```
+
 ## License
 ProxyCat is licensed under the [MIT license](https://opensource.org/license/mit/) as will remain this way for the duration of the project.
