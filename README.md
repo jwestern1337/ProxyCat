@@ -38,11 +38,11 @@ python3 proxycat.py [OPTIONS]
 ```
 
 ProxyCat currently supports the following arguments:
-⋅⋅* `-h, --help`: Shows help message.
-⋅⋅* `-f, --filename`: Text file containing proxies (ip:port) on each line (default=proxies.txt)
-⋅⋅* `-t, --timeout`: Timeout duration in seconds (default=5)
-⋅⋅* `-r, --retries`: Number of times to retry a proxy (default=2)
-⋅⋅* `-d, --download`: Download proxies from the internet (default=False)
+`-h, --help`: Shows help message.
+`-f, --filename`: Text file containing proxies (ip:port) on each line (default=proxies.txt)
+`-t, --timeout`: Timeout duration in seconds (default=5)
+`-r, --retries`: Number of times to retry a proxy (default=2)
+`-d, --download`: Download proxies from the internet (default=False)
 
 ## Roadmap
 I have quite a lot planned for ProxyCat in the future. For now here is a roadmap i have created:
