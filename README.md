@@ -50,7 +50,7 @@ ProxyCat currently supports the following arguments:
 I have quite a lot planned for ProxyCat in the future. For now here is a roadmap i have created:
 
 ```
-1st update:
+1st update: (WIP ⚒️)
   The first update is going to be primarily focused on adding new features ->
     - Add support for checking socks4/5 proxies (with username and password authentication supported).
     - Add the option to check more than one type of proxy at once (probably with an arg such as --multi).
